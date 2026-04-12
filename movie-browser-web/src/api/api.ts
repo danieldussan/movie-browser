@@ -132,14 +132,15 @@ export interface UserResponse {
 }
 
 /**
- * MovieControllerApi - axios parameter creator
+ * MoviesApi - axios parameter creator
  */
-export const MovieControllerApiAxiosParamCreator = function (configuration?: Configuration) {
+export const MoviesApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
         /**
-         * 
-         * @param {string} genre 
-         * @param {string} [pageToken] 
+         * Returns a paginated list of movies filtered by a specific genre.
+         * @summary List movies by genre
+         * @param {string} genre Genre name (e.g. Action, Drama, Comedy)
+         * @param {string} [pageToken] Token for the next page of results
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -176,7 +177,8 @@ export const MovieControllerApiAxiosParamCreator = function (configuration?: Con
         },
         /**
          * 
-         * @param {string} id 
+         * @summary Get movie details by IMDB ID
+         * @param {string} id IMDB title ID
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -208,8 +210,9 @@ export const MovieControllerApiAxiosParamCreator = function (configuration?: Con
             };
         },
         /**
-         * 
-         * @param {string} [pageToken] 
+         * Returns a paginated list of currently popular movies.
+         * @summary List popular movies
+         * @param {string} [pageToken] Token for the next page of results
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -242,8 +245,9 @@ export const MovieControllerApiAxiosParamCreator = function (configuration?: Con
             };
         },
         /**
-         * 
-         * @param {string} [pageToken] 
+         * Returns a paginated list of top-rated movies by vote score.
+         * @summary List top-rated movies
+         * @param {string} [pageToken] Token for the next page of results
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -276,8 +280,9 @@ export const MovieControllerApiAxiosParamCreator = function (configuration?: Con
             };
         },
         /**
-         * 
-         * @param {string} [pageToken] 
+         * Returns a paginated list of currently trending movies.
+         * @summary List trending movies
+         * @param {string} [pageToken] Token for the next page of results
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -313,85 +318,91 @@ export const MovieControllerApiAxiosParamCreator = function (configuration?: Con
 };
 
 /**
- * MovieControllerApi - functional programming interface
+ * MoviesApi - functional programming interface
  */
-export const MovieControllerApiFp = function(configuration?: Configuration) {
-    const localVarAxiosParamCreator = MovieControllerApiAxiosParamCreator(configuration)
+export const MoviesApiFp = function(configuration?: Configuration) {
+    const localVarAxiosParamCreator = MoviesApiAxiosParamCreator(configuration)
     return {
         /**
-         * 
-         * @param {string} genre 
-         * @param {string} [pageToken] 
+         * Returns a paginated list of movies filtered by a specific genre.
+         * @summary List movies by genre
+         * @param {string} genre Genre name (e.g. Action, Drama, Comedy)
+         * @param {string} [pageToken] Token for the next page of results
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         async getByGenre(genre: string, pageToken?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PagedResponseDtoContentSummaryDto>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getByGenre(genre, pageToken, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['MovieControllerApi.getByGenre']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['MoviesApi.getByGenre']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
          * 
-         * @param {string} id 
+         * @summary Get movie details by IMDB ID
+         * @param {string} id IMDB title ID
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         async getById1(id: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<MovieDetailDto>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getById1(id, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['MovieControllerApi.getById1']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['MoviesApi.getById1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         * 
-         * @param {string} [pageToken] 
+         * Returns a paginated list of currently popular movies.
+         * @summary List popular movies
+         * @param {string} [pageToken] Token for the next page of results
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         async getPopular1(pageToken?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PagedResponseDtoContentSummaryDto>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getPopular1(pageToken, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['MovieControllerApi.getPopular1']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['MoviesApi.getPopular1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         * 
-         * @param {string} [pageToken] 
+         * Returns a paginated list of top-rated movies by vote score.
+         * @summary List top-rated movies
+         * @param {string} [pageToken] Token for the next page of results
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         async getTopRated1(pageToken?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PagedResponseDtoContentSummaryDto>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getTopRated1(pageToken, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['MovieControllerApi.getTopRated1']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['MoviesApi.getTopRated1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         * 
-         * @param {string} [pageToken] 
+         * Returns a paginated list of currently trending movies.
+         * @summary List trending movies
+         * @param {string} [pageToken] Token for the next page of results
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         async getTrending1(pageToken?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PagedResponseDtoContentSummaryDto>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getTrending1(pageToken, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['MovieControllerApi.getTrending1']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['MoviesApi.getTrending1']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
     }
 };
 
 /**
- * MovieControllerApi - factory interface
+ * MoviesApi - factory interface
  */
-export const MovieControllerApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
-    const localVarFp = MovieControllerApiFp(configuration)
+export const MoviesApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
+    const localVarFp = MoviesApiFp(configuration)
     return {
         /**
-         * 
-         * @param {string} genre 
-         * @param {string} [pageToken] 
+         * Returns a paginated list of movies filtered by a specific genre.
+         * @summary List movies by genre
+         * @param {string} genre Genre name (e.g. Action, Drama, Comedy)
+         * @param {string} [pageToken] Token for the next page of results
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -400,7 +411,8 @@ export const MovieControllerApiFactory = function (configuration?: Configuration
         },
         /**
          * 
-         * @param {string} id 
+         * @summary Get movie details by IMDB ID
+         * @param {string} id IMDB title ID
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -408,8 +420,9 @@ export const MovieControllerApiFactory = function (configuration?: Configuration
             return localVarFp.getById1(id, options).then((request) => request(axios, basePath));
         },
         /**
-         * 
-         * @param {string} [pageToken] 
+         * Returns a paginated list of currently popular movies.
+         * @summary List popular movies
+         * @param {string} [pageToken] Token for the next page of results
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -417,8 +430,9 @@ export const MovieControllerApiFactory = function (configuration?: Configuration
             return localVarFp.getPopular1(pageToken, options).then((request) => request(axios, basePath));
         },
         /**
-         * 
-         * @param {string} [pageToken] 
+         * Returns a paginated list of top-rated movies by vote score.
+         * @summary List top-rated movies
+         * @param {string} [pageToken] Token for the next page of results
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -426,8 +440,9 @@ export const MovieControllerApiFactory = function (configuration?: Configuration
             return localVarFp.getTopRated1(pageToken, options).then((request) => request(axios, basePath));
         },
         /**
-         * 
-         * @param {string} [pageToken] 
+         * Returns a paginated list of currently trending movies.
+         * @summary List trending movies
+         * @param {string} [pageToken] Token for the next page of results
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -438,71 +453,77 @@ export const MovieControllerApiFactory = function (configuration?: Configuration
 };
 
 /**
- * MovieControllerApi - object-oriented interface
+ * MoviesApi - object-oriented interface
  */
-export class MovieControllerApi extends BaseAPI {
+export class MoviesApi extends BaseAPI {
     /**
-     * 
-     * @param {string} genre 
-     * @param {string} [pageToken] 
+     * Returns a paginated list of movies filtered by a specific genre.
+     * @summary List movies by genre
+     * @param {string} genre Genre name (e.g. Action, Drama, Comedy)
+     * @param {string} [pageToken] Token for the next page of results
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     public getByGenre(genre: string, pageToken?: string, options?: RawAxiosRequestConfig) {
-        return MovieControllerApiFp(this.configuration).getByGenre(genre, pageToken, options).then((request) => request(this.axios, this.basePath));
+        return MoviesApiFp(this.configuration).getByGenre(genre, pageToken, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
-     * @param {string} id 
+     * @summary Get movie details by IMDB ID
+     * @param {string} id IMDB title ID
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     public getById1(id: string, options?: RawAxiosRequestConfig) {
-        return MovieControllerApiFp(this.configuration).getById1(id, options).then((request) => request(this.axios, this.basePath));
+        return MoviesApiFp(this.configuration).getById1(id, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
-     * 
-     * @param {string} [pageToken] 
+     * Returns a paginated list of currently popular movies.
+     * @summary List popular movies
+     * @param {string} [pageToken] Token for the next page of results
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     public getPopular1(pageToken?: string, options?: RawAxiosRequestConfig) {
-        return MovieControllerApiFp(this.configuration).getPopular1(pageToken, options).then((request) => request(this.axios, this.basePath));
+        return MoviesApiFp(this.configuration).getPopular1(pageToken, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
-     * 
-     * @param {string} [pageToken] 
+     * Returns a paginated list of top-rated movies by vote score.
+     * @summary List top-rated movies
+     * @param {string} [pageToken] Token for the next page of results
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     public getTopRated1(pageToken?: string, options?: RawAxiosRequestConfig) {
-        return MovieControllerApiFp(this.configuration).getTopRated1(pageToken, options).then((request) => request(this.axios, this.basePath));
+        return MoviesApiFp(this.configuration).getTopRated1(pageToken, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
-     * 
-     * @param {string} [pageToken] 
+     * Returns a paginated list of currently trending movies.
+     * @summary List trending movies
+     * @param {string} [pageToken] Token for the next page of results
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     public getTrending1(pageToken?: string, options?: RawAxiosRequestConfig) {
-        return MovieControllerApiFp(this.configuration).getTrending1(pageToken, options).then((request) => request(this.axios, this.basePath));
+        return MoviesApiFp(this.configuration).getTrending1(pageToken, options).then((request) => request(this.axios, this.basePath));
     }
 }
 
 
 
 /**
- * SearchControllerApi - axios parameter creator
+ * SearchApi - axios parameter creator
  */
-export const SearchControllerApiAxiosParamCreator = function (configuration?: Configuration) {
+export const SearchApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
         /**
-         * 
-         * @param {string} query 
+         * Performs a full-text search across IMDB titles. Returns a flat list of matching movies and series summaries.
+         * @summary Search movies and series
+         * @param {string} query Search term to query IMDB titles
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -540,69 +561,73 @@ export const SearchControllerApiAxiosParamCreator = function (configuration?: Co
 };
 
 /**
- * SearchControllerApi - functional programming interface
+ * SearchApi - functional programming interface
  */
-export const SearchControllerApiFp = function(configuration?: Configuration) {
-    const localVarAxiosParamCreator = SearchControllerApiAxiosParamCreator(configuration)
+export const SearchApiFp = function(configuration?: Configuration) {
+    const localVarAxiosParamCreator = SearchApiAxiosParamCreator(configuration)
     return {
         /**
-         * 
-         * @param {string} query 
+         * Performs a full-text search across IMDB titles. Returns a flat list of matching movies and series summaries.
+         * @summary Search movies and series
+         * @param {string} query Search term to query IMDB titles
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async search(query: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<ContentSummaryDto>>> {
+        async search(query: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ContentSummaryDto>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.search(query, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['SearchControllerApi.search']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['SearchApi.search']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
     }
 };
 
 /**
- * SearchControllerApi - factory interface
+ * SearchApi - factory interface
  */
-export const SearchControllerApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
-    const localVarFp = SearchControllerApiFp(configuration)
+export const SearchApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
+    const localVarFp = SearchApiFp(configuration)
     return {
         /**
-         * 
-         * @param {string} query 
+         * Performs a full-text search across IMDB titles. Returns a flat list of matching movies and series summaries.
+         * @summary Search movies and series
+         * @param {string} query Search term to query IMDB titles
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        search(query: string, options?: RawAxiosRequestConfig): AxiosPromise<Array<ContentSummaryDto>> {
+        search(query: string, options?: RawAxiosRequestConfig): AxiosPromise<ContentSummaryDto> {
             return localVarFp.search(query, options).then((request) => request(axios, basePath));
         },
     };
 };
 
 /**
- * SearchControllerApi - object-oriented interface
+ * SearchApi - object-oriented interface
  */
-export class SearchControllerApi extends BaseAPI {
+export class SearchApi extends BaseAPI {
     /**
-     * 
-     * @param {string} query 
+     * Performs a full-text search across IMDB titles. Returns a flat list of matching movies and series summaries.
+     * @summary Search movies and series
+     * @param {string} query Search term to query IMDB titles
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     public search(query: string, options?: RawAxiosRequestConfig) {
-        return SearchControllerApiFp(this.configuration).search(query, options).then((request) => request(this.axios, this.basePath));
+        return SearchApiFp(this.configuration).search(query, options).then((request) => request(this.axios, this.basePath));
     }
 }
 
 
 
 /**
- * SeriesControllerApi - axios parameter creator
+ * SeriesApi - axios parameter creator
  */
-export const SeriesControllerApiAxiosParamCreator = function (configuration?: Configuration) {
+export const SeriesApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
         /**
          * 
-         * @param {string} id 
+         * @summary Get series details by IMDB ID
+         * @param {string} id IMDB title ID
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -635,8 +660,9 @@ export const SeriesControllerApiAxiosParamCreator = function (configuration?: Co
         },
         /**
          * 
-         * @param {string} id 
-         * @param {number} seasonNumber 
+         * @summary List episodes of a specific season
+         * @param {string} id IMDB title ID
+         * @param {number} seasonNumber Season number
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -671,8 +697,9 @@ export const SeriesControllerApiAxiosParamCreator = function (configuration?: Co
             };
         },
         /**
-         * 
-         * @param {string} [pageToken] 
+         * Returns a paginated list of currently popular TV series.
+         * @summary List popular series
+         * @param {string} [pageToken] Token for the next page of results
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -706,7 +733,8 @@ export const SeriesControllerApiAxiosParamCreator = function (configuration?: Co
         },
         /**
          * 
-         * @param {string} id 
+         * @summary List seasons of a series
+         * @param {string} id IMDB title ID
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -738,8 +766,9 @@ export const SeriesControllerApiAxiosParamCreator = function (configuration?: Co
             };
         },
         /**
-         * 
-         * @param {string} [pageToken] 
+         * Returns a paginated list of top-rated TV series by vote score.
+         * @summary List top-rated series
+         * @param {string} [pageToken] Token for the next page of results
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -772,8 +801,9 @@ export const SeriesControllerApiAxiosParamCreator = function (configuration?: Co
             };
         },
         /**
-         * 
-         * @param {string} [pageToken] 
+         * Returns a paginated list of currently trending TV series.
+         * @summary List trending series
+         * @param {string} [pageToken] Token for the next page of results
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -809,96 +839,103 @@ export const SeriesControllerApiAxiosParamCreator = function (configuration?: Co
 };
 
 /**
- * SeriesControllerApi - functional programming interface
+ * SeriesApi - functional programming interface
  */
-export const SeriesControllerApiFp = function(configuration?: Configuration) {
-    const localVarAxiosParamCreator = SeriesControllerApiAxiosParamCreator(configuration)
+export const SeriesApiFp = function(configuration?: Configuration) {
+    const localVarAxiosParamCreator = SeriesApiAxiosParamCreator(configuration)
     return {
         /**
          * 
-         * @param {string} id 
+         * @summary Get series details by IMDB ID
+         * @param {string} id IMDB title ID
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         async getById(id: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SeriesDetailDto>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getById(id, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['SeriesControllerApi.getById']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['SeriesApi.getById']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
          * 
-         * @param {string} id 
-         * @param {number} seasonNumber 
+         * @summary List episodes of a specific season
+         * @param {string} id IMDB title ID
+         * @param {number} seasonNumber Season number
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         async getEpisodes(id: string, seasonNumber: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<EpisodeDto>>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getEpisodes(id, seasonNumber, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['SeriesControllerApi.getEpisodes']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['SeriesApi.getEpisodes']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         * 
-         * @param {string} [pageToken] 
+         * Returns a paginated list of currently popular TV series.
+         * @summary List popular series
+         * @param {string} [pageToken] Token for the next page of results
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         async getPopular(pageToken?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PagedResponseDtoContentSummaryDto>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getPopular(pageToken, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['SeriesControllerApi.getPopular']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['SeriesApi.getPopular']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
          * 
-         * @param {string} id 
+         * @summary List seasons of a series
+         * @param {string} id IMDB title ID
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         async getSeasons(id: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<SeasonDto>>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getSeasons(id, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['SeriesControllerApi.getSeasons']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['SeriesApi.getSeasons']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         * 
-         * @param {string} [pageToken] 
+         * Returns a paginated list of top-rated TV series by vote score.
+         * @summary List top-rated series
+         * @param {string} [pageToken] Token for the next page of results
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         async getTopRated(pageToken?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PagedResponseDtoContentSummaryDto>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getTopRated(pageToken, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['SeriesControllerApi.getTopRated']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['SeriesApi.getTopRated']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         * 
-         * @param {string} [pageToken] 
+         * Returns a paginated list of currently trending TV series.
+         * @summary List trending series
+         * @param {string} [pageToken] Token for the next page of results
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         async getTrending(pageToken?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PagedResponseDtoContentSummaryDto>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getTrending(pageToken, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['SeriesControllerApi.getTrending']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['SeriesApi.getTrending']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
     }
 };
 
 /**
- * SeriesControllerApi - factory interface
+ * SeriesApi - factory interface
  */
-export const SeriesControllerApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
-    const localVarFp = SeriesControllerApiFp(configuration)
+export const SeriesApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
+    const localVarFp = SeriesApiFp(configuration)
     return {
         /**
          * 
-         * @param {string} id 
+         * @summary Get series details by IMDB ID
+         * @param {string} id IMDB title ID
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -907,8 +944,9 @@ export const SeriesControllerApiFactory = function (configuration?: Configuratio
         },
         /**
          * 
-         * @param {string} id 
-         * @param {number} seasonNumber 
+         * @summary List episodes of a specific season
+         * @param {string} id IMDB title ID
+         * @param {number} seasonNumber Season number
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -916,8 +954,9 @@ export const SeriesControllerApiFactory = function (configuration?: Configuratio
             return localVarFp.getEpisodes(id, seasonNumber, options).then((request) => request(axios, basePath));
         },
         /**
-         * 
-         * @param {string} [pageToken] 
+         * Returns a paginated list of currently popular TV series.
+         * @summary List popular series
+         * @param {string} [pageToken] Token for the next page of results
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -926,7 +965,8 @@ export const SeriesControllerApiFactory = function (configuration?: Configuratio
         },
         /**
          * 
-         * @param {string} id 
+         * @summary List seasons of a series
+         * @param {string} id IMDB title ID
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -934,8 +974,9 @@ export const SeriesControllerApiFactory = function (configuration?: Configuratio
             return localVarFp.getSeasons(id, options).then((request) => request(axios, basePath));
         },
         /**
-         * 
-         * @param {string} [pageToken] 
+         * Returns a paginated list of top-rated TV series by vote score.
+         * @summary List top-rated series
+         * @param {string} [pageToken] Token for the next page of results
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -943,8 +984,9 @@ export const SeriesControllerApiFactory = function (configuration?: Configuratio
             return localVarFp.getTopRated(pageToken, options).then((request) => request(axios, basePath));
         },
         /**
-         * 
-         * @param {string} [pageToken] 
+         * Returns a paginated list of currently trending TV series.
+         * @summary List trending series
+         * @param {string} [pageToken] Token for the next page of results
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -955,68 +997,74 @@ export const SeriesControllerApiFactory = function (configuration?: Configuratio
 };
 
 /**
- * SeriesControllerApi - object-oriented interface
+ * SeriesApi - object-oriented interface
  */
-export class SeriesControllerApi extends BaseAPI {
+export class SeriesApi extends BaseAPI {
     /**
      * 
-     * @param {string} id 
+     * @summary Get series details by IMDB ID
+     * @param {string} id IMDB title ID
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     public getById(id: string, options?: RawAxiosRequestConfig) {
-        return SeriesControllerApiFp(this.configuration).getById(id, options).then((request) => request(this.axios, this.basePath));
+        return SeriesApiFp(this.configuration).getById(id, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
-     * @param {string} id 
-     * @param {number} seasonNumber 
+     * @summary List episodes of a specific season
+     * @param {string} id IMDB title ID
+     * @param {number} seasonNumber Season number
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     public getEpisodes(id: string, seasonNumber: number, options?: RawAxiosRequestConfig) {
-        return SeriesControllerApiFp(this.configuration).getEpisodes(id, seasonNumber, options).then((request) => request(this.axios, this.basePath));
+        return SeriesApiFp(this.configuration).getEpisodes(id, seasonNumber, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
-     * 
-     * @param {string} [pageToken] 
+     * Returns a paginated list of currently popular TV series.
+     * @summary List popular series
+     * @param {string} [pageToken] Token for the next page of results
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     public getPopular(pageToken?: string, options?: RawAxiosRequestConfig) {
-        return SeriesControllerApiFp(this.configuration).getPopular(pageToken, options).then((request) => request(this.axios, this.basePath));
+        return SeriesApiFp(this.configuration).getPopular(pageToken, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
-     * @param {string} id 
+     * @summary List seasons of a series
+     * @param {string} id IMDB title ID
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     public getSeasons(id: string, options?: RawAxiosRequestConfig) {
-        return SeriesControllerApiFp(this.configuration).getSeasons(id, options).then((request) => request(this.axios, this.basePath));
+        return SeriesApiFp(this.configuration).getSeasons(id, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
-     * 
-     * @param {string} [pageToken] 
+     * Returns a paginated list of top-rated TV series by vote score.
+     * @summary List top-rated series
+     * @param {string} [pageToken] Token for the next page of results
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     public getTopRated(pageToken?: string, options?: RawAxiosRequestConfig) {
-        return SeriesControllerApiFp(this.configuration).getTopRated(pageToken, options).then((request) => request(this.axios, this.basePath));
+        return SeriesApiFp(this.configuration).getTopRated(pageToken, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
-     * 
-     * @param {string} [pageToken] 
+     * Returns a paginated list of currently trending TV series.
+     * @summary List trending series
+     * @param {string} [pageToken] Token for the next page of results
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     public getTrending(pageToken?: string, options?: RawAxiosRequestConfig) {
-        return SeriesControllerApiFp(this.configuration).getTrending(pageToken, options).then((request) => request(this.axios, this.basePath));
+        return SeriesApiFp(this.configuration).getTrending(pageToken, options).then((request) => request(this.axios, this.basePath));
     }
 }
 

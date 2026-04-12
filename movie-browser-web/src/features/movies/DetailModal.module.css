@@ -1,0 +1,31 @@
+.container {
+    color: white;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.metaRow {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.match {
+    color: #46d369;
+}
+
+.plot {
+    margin-bottom: 20px;
+    font-size: 1.05rem;
+}
+
+.detailsList p {
+    margin: 8px 0;
+    color: #bcbcbc;
+}
+
+.detailsList strong {
+    color: #fff;
+}

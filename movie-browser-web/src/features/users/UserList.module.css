@@ -1,0 +1,75 @@
+.tableContainer {
+    width: 100%;
+    overflow-x: auto;
+    background-color: rgba(20, 20, 20, 0.8);
+    border-radius: 8px;
+    border: 1px solid #333;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.table th, .table td {
+    padding: 16px;
+    border-bottom: 1px solid #333;
+}
+
+.table th {
+    background-color: #000;
+    color: #fff;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.table td {
+    color: #e5e5e5;
+    font-size: 0.95rem;
+}
+
+.table tbody tr:hover {
+    background-color: #222;
+}
+
+.table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.actions {
+    display: flex;
+    gap: 10px;
+}
+
+.actions button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 4px;
+}
+
+.editBtn {
+    background-color: #333;
+    color: #fff;
+}
+
+.editBtn:hover {
+    background-color: #555;
+}
+
+.deleteBtn {
+    background-color: transparent;
+    color: #b3b3b3;
+    border: 1px solid #333;
+}
+
+.deleteBtn:hover {
+    background-color: var(--primary-hover);
+    color: white;
+    border-color: var(--primary-hover);
+}

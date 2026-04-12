@@ -1,0 +1,87 @@
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.errorMsg {
+    background-color: rgba(229, 9, 20, 0.1);
+    color: var(--primary-brand);
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid var(--primary-brand);
+    font-size: 0.9rem;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.field label {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #b3b3b3;
+}
+
+.field label small {
+    color: #666;
+    font-size: 0.75rem;
+}
+
+.input {
+    background-color: #333;
+    border: 1px solid #444;
+    color: #fff;
+    padding: 12px;
+    border-radius: 4px;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color var(--transition-speed);
+}
+
+.input:focus {
+    border-color: #fff;
+    background-color: #444;
+}
+
+.actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.cancelBtn {
+    background-color: transparent;
+    color: #fff;
+    padding: 10px 20px;
+    border: 1px solid #555;
+    font-weight: 600;
+}
+
+.cancelBtn:hover {
+    background-color: #333;
+}
+
+.cancelBtn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.saveBtn {
+    background-color: var(--primary-brand);
+    color: #fff;
+    padding: 10px 24px;
+    font-weight: 600;
+}
+
+.saveBtn:hover {
+    background-color: var(--primary-hover);
+}
+
+.saveBtn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}

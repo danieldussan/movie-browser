@@ -1,0 +1,77 @@
+.container {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+}
+
+.title {
+    font-size: 3.5rem;
+    font-weight: 400;
+    margin-bottom: 2rem;
+}
+
+.profilesWrapper {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    max-width: 80%;
+}
+
+.profileCard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    transition: transform var(--transition-speed);
+}
+
+.avatar {
+    width: 152px;
+    height: 152px;
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 4rem;
+    color: white;
+    font-weight: bold;
+    border: 2px solid transparent;
+    transition: border-color var(--transition-speed);
+}
+
+.name {
+    margin-top: 0.8rem;
+    color: var(--text-secondary);
+    font-size: 1.2rem;
+    transition: color var(--transition-speed);
+}
+
+.profileCard:hover .avatar {
+    border-color: white;
+}
+
+.profileCard:hover .name {
+    color: white;
+}
+
+.manageButton {
+    margin-top: 4rem;
+    background: transparent;
+    border: 1px solid var(--text-secondary);
+    color: var(--text-secondary);
+    padding: 0.8rem 2rem;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.manageButton:hover {
+    color: white;
+    border-color: white;
+}

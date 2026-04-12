@@ -1,0 +1,78 @@
+.card {
+    position: relative;
+    width: 250px;
+    height: 140px; /* Base 16:9 like standard netflix rows */
+    flex-shrink: 0;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: transform var(--transition-speed) ease 0.3s;
+    background-color: #222;
+    z-index: 1;
+}
+
+.card:hover {
+    transform: scale(1.3);
+    z-index: 10;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.8);
+    height: 250px; /* Expand on hover */
+    border-radius: 6px;
+}
+
+.poster {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.card:hover .poster {
+    height: 140px; /* Top part remains poster */
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.hoverInfo {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 110px;
+    background-color: #141414;
+    padding: 10px;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.hoverInfo h4 {
+    color: white;
+    font-size: 1rem;
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.meta {
+    display: flex;
+    gap: 10px;
+    font-size: 0.8rem;
+    align-items: center;
+}
+
+.match {
+    color: #46d369;
+    font-weight: bold;
+}
+
+.year {
+    color: #bcbcbc;
+}
+
+.genres {
+    color: #fff;
+    font-size: 0.75rem;
+    margin: 0;
+}

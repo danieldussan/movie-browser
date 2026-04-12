@@ -33,6 +33,7 @@ services:
       DB_URL: jdbc:mariadb://db:3306/simple_users_db
       DB_USERNAME: app_user
       DB_PASSWORD: app_password
+      IMDB_API_URL: https://api.imdbapi.dev
 
   nginx:
     image: nginx:alpine

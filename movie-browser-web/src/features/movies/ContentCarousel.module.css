@@ -1,0 +1,35 @@
+.carouselContainer {
+    padding: 0 4%;
+    margin-bottom: 3vw;
+}
+
+.title {
+    font-size: 1.4vw;
+    color: #e5e5e5;
+    font-weight: 500;
+    margin-bottom: 0.5em;
+    padding-left: 5px;
+}
+
+.track {
+    display: flex;
+    overflow-x: auto;
+    overflow-y: hidden;
+    gap: 8px;
+    padding: 20px 0;
+    scroll-behavior: smooth;
+}
+
+.track::-webkit-scrollbar {
+    height: 6px;
+    display: none;
+}
+
+.carouselContainer:hover .track::-webkit-scrollbar {
+    display: block;
+}
+
+.track::-webkit-scrollbar-thumb {
+    background-color: #555;
+    border-radius: 4px;
+}
