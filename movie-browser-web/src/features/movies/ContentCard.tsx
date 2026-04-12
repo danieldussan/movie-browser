@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import type { ContentSummaryDto } from '../../api';
 import DetailModal from './DetailModal';
+import LazyImage from '../../components/ui/LazyImage';
 import classes from './ContentCard.module.css';
 
 interface ContentCardProps {
@@ -15,12 +16,16 @@ export default function ContentCard({ item }: ContentCardProps) {
 
     return (
         <>
-            <div 
+            <div
               className={classes.card}
               onClick={() => setShowModal(true)}
             >
-                <img src={posterUrl} alt={item.title || 'Movie'} className={classes.poster} loading="lazy" />
-                
+                <LazyImage
+                    src={posterUrl}
+                    alt={item.title || 'Movie'}
+                    className={classes.poster}
+                />
+
                 <div className={classes.overlay}>
                     <div className={classes.hoverInfo}>
                         <h4>{item.title}</h4>
@@ -32,7 +37,7 @@ export default function ContentCard({ item }: ContentCardProps) {
                     </div>
                 </div>
             </div>
-            
+
             {showModal && (
                 <DetailModal itemId={item.id!} type={item.type!} onClose={() => setShowModal(false)} />
             )}

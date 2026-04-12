@@ -10,17 +10,20 @@
     padding: 0 4%;
 }
 
+.trackWrapper {
+    position: relative;
+}
+
 .track {
     display: flex;
     overflow-x: auto;
     overflow-y: visible;
     padding: 1vw 4%;
     scroll-behavior: smooth;
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;  /* Firefox */
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 }
 
-/* Let the cards expand slightly without clipping */
 .track::-webkit-scrollbar {
-    display: none; /* Chrome, Safari and Opera */
+    display: none;
 }

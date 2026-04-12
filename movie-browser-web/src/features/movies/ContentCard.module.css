@@ -3,21 +3,27 @@
     width: 20vw;
     max-width: 260px;
     min-width: 200px;
-    aspect-ratio: 16 / 9;
+    aspect-ratio: 2 / 3;
     flex-shrink: 0;
     cursor: pointer;
     border-radius: 4px;
-    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.4s ease;
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                box-shadow 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     background-color: #222;
     z-index: 1;
     overflow: hidden;
+    will-change: transform;
 }
 
 .card:hover {
     transform: scale(1.15) translateY(-2%);
     z-index: 10;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.8);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.9), 0 0 0 1px rgba(255, 255, 255, 0.1);
     border-radius: 6px;
+}
+
+.card:active {
+    transform: scale(1.12) translateY(-1%);
 }
 
 .poster {
@@ -28,19 +34,29 @@
     transition: filter 0.4s ease;
 }
 
+.card:hover .poster {
+    filter: brightness(1.1);
+}
+
 .overlay {
     position: absolute;
     bottom: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(to top, rgba(20,20,20,0.95) 0%, rgba(20,20,20,0) 60%);
+    background: linear-gradient(
+        to top,
+        rgba(20, 20, 20, 0.98) 0%,
+        rgba(20, 20, 20, 0.85) 40%,
+        rgba(20, 20, 20, 0) 70%
+    );
     opacity: 0;
-    transition: opacity 0.4s ease;
+    transition: opacity 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
     border-radius: inherit;
+    pointer-events: none;
 }
 
 .card:hover .overlay {
@@ -50,7 +66,7 @@
 .hoverInfo {
     padding: 15px;
     transform: translateY(10px);
-    transition: transform 0.4s ease;
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .card:hover .hoverInfo {
@@ -65,7 +81,7 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
 }
 
 .meta {
@@ -80,14 +96,28 @@
 .match {
     color: #46d369;
     font-weight: 700;
+    animation: fadeInUp 0.3s ease-out 0.1s both;
 }
 
 .year {
     color: #bcbcbc;
+    animation: fadeInUp 0.3s ease-out 0.15s both;
 }
 
 .genres {
     color: #e5e5e5;
     font-size: 0.8rem;
     margin: 0;
+    animation: fadeInUp 0.3s ease-out 0.2s both;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(5px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }

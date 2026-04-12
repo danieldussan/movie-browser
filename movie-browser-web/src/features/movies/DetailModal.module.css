@@ -4,16 +4,95 @@
     line-height: 1.6;
 }
 
+.posterWrapper {
+    width: 100%;
+    max-width: 200px;
+    margin: 0 auto 20px;
+    aspect-ratio: 2 / 3;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+.posterImage {
+    width: 100%;
+    height: 100%;
+}
+
+.loadingSkeleton {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.skeletonImage {
+    width: 100%;
+    max-width: 200px;
+    aspect-ratio: 2 / 3;
+    margin: 0 auto;
+    background: linear-gradient(
+        90deg,
+        #222 0%,
+        #333 50%,
+        #222 100%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+    border-radius: 8px;
+}
+
+.skeletonText {
+    width: 100%;
+    height: 16px;
+    background: linear-gradient(
+        90deg,
+        #222 0%,
+        #333 50%,
+        #222 100%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+    border-radius: 4px;
+}
+
+.skeletonTextShort {
+    width: 70%;
+    height: 16px;
+    background: linear-gradient(
+        90deg,
+        #222 0%,
+        #333 50%,
+        #222 100%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+    border-radius: 4px;
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: -200% 0;
+    }
+    100% {
+        background-position: 200% 0;
+    }
+}
+
 .metaRow {
     display: flex;
     gap: 15px;
     align-items: center;
     margin-bottom: 20px;
     font-weight: bold;
+    flex-wrap: wrap;
 }
 
 .match {
     color: #46d369;
+}
+
+.rating {
+    color: #ffd700;
 }
 
 .plot {

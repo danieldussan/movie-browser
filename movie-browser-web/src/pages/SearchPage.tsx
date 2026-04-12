@@ -3,11 +3,13 @@ import { useSearchParams } from 'react-router-dom';
 import { searchApi } from '../services/apiClient';
 import type { ContentSummaryDto } from '../api';
 import ContentCard from '../features/movies/ContentCard';
+import SkeletonCard from '../components/ui/SkeletonCard';
+import { preloadImages } from '../utils/imageUtils';
 
 export default function SearchPage() {
     const [searchParams] = useSearchParams();
     const query = searchParams.get('q') || '';
-    
+
     const [results, setResults] = useState<ContentSummaryDto[]>([]);
     const [loading, setLoading] = useState(false);
 
@@ -17,10 +19,17 @@ export default function SearchPage() {
             setLoading(true);
             try {
                 const response = await searchApi.search(query);
-                // API currently returns ContentSummaryDto directly or an array, depending on generator. 
-                // Let's assume response.data is an array or has a results field.
-                const items = Array.isArray(response.data) ? response.data : (response.data as any).results || [];
+                const data = response.data as any;
+                const items = Array.isArray(data) ? data : data.results || [];
                 setResults(items);
+
+                // Preload search result images
+                if (items && items.length > 0) {
+                    const imageUrls = items
+                        .map((item: ContentSummaryDto) => item.posterUrl)
+                        .filter(Boolean);
+                    preloadImages(imageUrls);
+                }
             } catch (err) {
                 console.error("Search failed", err);
             } finally {
@@ -36,11 +45,15 @@ export default function SearchPage() {
             <h2 style={{ color: 'white', marginBottom: '20px' }}>
                 Search Results for "{query}"
             </h2>
-            
-            {loading && <p style={{ color: '#b3b3b3' }}>Loading...</p>}
-            
+
+            {loading && (
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '15px' }}>
+                    {Array.from({ length: 7 }).map((_, i) => <SkeletonCard key={i} />)}
+                </div>
+            )}
+
             {!loading && results.length === 0 && query && (
-                <p style={{ color: '#b3b3b3' }}>No matches found for "{query}".</p>
+                <p style={{ color: '#b3b3b3', fontSize: '1.1rem' }}>No matches found for "{query}".</p>
             )}
 
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '15px' }}>

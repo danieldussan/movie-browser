@@ -1,10 +1,10 @@
 # Etapa de construcción (Build stage)
-FROM node:18-alpine AS builder
+FROM node:24-alpine AS builder
 WORKDIR /app
 
 # Copiar dependencias
 COPY package.json package-lock.json ./
-RUN npm ci
+RUN npm install
 
 # Copiar el resto del código y construir la app
 COPY . .
