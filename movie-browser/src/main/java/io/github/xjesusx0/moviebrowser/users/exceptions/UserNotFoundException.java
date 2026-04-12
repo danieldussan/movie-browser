@@ -1,4 +1,4 @@
-package io.github.xjesusx0.moviebrowser.users;
+package io.github.xjesusx0.moviebrowser.users.exceptions;
 
 public class UserNotFoundException extends RuntimeException {
     public UserNotFoundException(Integer id) {

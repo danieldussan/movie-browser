@@ -1,0 +1,49 @@
+services:
+
+  db:
+    build:
+      context: ./db
+    container_name: movie-browser-db
+    restart: unless-stopped
+    environment:
+      MARIADB_ROOT_PASSWORD: root
+      MARIADB_DATABASE: simple_users_db
+      MARIADB_USER: app_user
+      MARIADB_PASSWORD: app_password
+    ports:
+      - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+
+  backend:
+    build:
+      context: ./movie-browser
+    container_name: movie-browser-backend
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      DB_URL: jdbc:mariadb://db:3306/simple_users_db
+      DB_USERNAME: app_user
+      DB_PASSWORD: app_password
+
+  nginx:
+    image: nginx:alpine
+    container_name: movie-browser-nginx
+    restart: unless-stopped
+    depends_on:
+      - backend
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+
+volumes:
+  db_data:

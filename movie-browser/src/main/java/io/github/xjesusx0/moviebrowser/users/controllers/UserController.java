@@ -1,7 +1,8 @@
-package io.github.xjesusx0.moviebrowser.users;
+package io.github.xjesusx0.moviebrowser.users.controllers;
 
 import io.github.xjesusx0.moviebrowser.users.dto.UserRequest;
 import io.github.xjesusx0.moviebrowser.users.dto.UserResponse;
+import io.github.xjesusx0.moviebrowser.users.services.UserService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -17,7 +18,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/users")
+@RequestMapping("/api/v1/users")
 @RequiredArgsConstructor
 @Tag(name = "Users", description = "CRUD operations for user management")
 public class UserController {

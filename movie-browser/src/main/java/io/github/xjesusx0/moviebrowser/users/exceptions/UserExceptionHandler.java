@@ -1,4 +1,4 @@
-package io.github.xjesusx0.moviebrowser.users;
+package io.github.xjesusx0.moviebrowser.users.exceptions;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ProblemDetail;

@@ -1,5 +1,6 @@
-package io.github.xjesusx0.moviebrowser.users;
+package io.github.xjesusx0.moviebrowser.users.repositories;
 
+import io.github.xjesusx0.moviebrowser.users.models.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

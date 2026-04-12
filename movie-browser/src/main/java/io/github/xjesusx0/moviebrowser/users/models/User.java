@@ -1,4 +1,4 @@
-package io.github.xjesusx0.moviebrowser.users;
+package io.github.xjesusx0.moviebrowser.users.models;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

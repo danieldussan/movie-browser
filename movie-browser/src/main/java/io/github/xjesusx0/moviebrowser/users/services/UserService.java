@@ -1,7 +1,10 @@
-package io.github.xjesusx0.moviebrowser.users;
+package io.github.xjesusx0.moviebrowser.users.services;
 
+import io.github.xjesusx0.moviebrowser.users.models.User;
+import io.github.xjesusx0.moviebrowser.users.exceptions.UserNotFoundException;
 import io.github.xjesusx0.moviebrowser.users.dto.UserRequest;
 import io.github.xjesusx0.moviebrowser.users.dto.UserResponse;
+import io.github.xjesusx0.moviebrowser.users.repositories.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
