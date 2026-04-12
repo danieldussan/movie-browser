@@ -8,7 +8,6 @@ interface ContentCardProps {
 }
 
 export default function ContentCard({ item }: ContentCardProps) {
-    const [isHovered, setIsHovered] = useState(false);
     const [showModal, setShowModal] = useState(false);
 
     // Fallback if posterUrl is empty
@@ -18,13 +17,11 @@ export default function ContentCard({ item }: ContentCardProps) {
         <>
             <div 
               className={classes.card}
-              onMouseEnter={() => setIsHovered(true)}
-              onMouseLeave={() => setIsHovered(false)}
               onClick={() => setShowModal(true)}
             >
                 <img src={posterUrl} alt={item.title || 'Movie'} className={classes.poster} loading="lazy" />
                 
-                {isHovered && (
+                <div className={classes.overlay}>
                     <div className={classes.hoverInfo}>
                         <h4>{item.title}</h4>
                         <div className={classes.meta}>
@@ -33,7 +30,7 @@ export default function ContentCard({ item }: ContentCardProps) {
                         </div>
                         <p className={classes.genres}>{item.genres?.slice(0, 3).join(' • ')}</p>
                     </div>
-                )}
+                </div>
             </div>
             
             {showModal && (

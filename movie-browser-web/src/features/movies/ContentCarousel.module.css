@@ -1,35 +1,26 @@
 .carouselContainer {
-    padding: 0 4%;
-    margin-bottom: 3vw;
+    margin-bottom: 3.5vw;
 }
 
 .title {
-    font-size: 1.4vw;
+    font-size: 1.3vw;
     color: #e5e5e5;
-    font-weight: 500;
+    font-weight: 700;
     margin-bottom: 0.5em;
-    padding-left: 5px;
+    padding: 0 4%;
 }
 
 .track {
     display: flex;
     overflow-x: auto;
-    overflow-y: hidden;
-    gap: 8px;
-    padding: 20px 0;
+    overflow-y: visible;
+    padding: 1vw 4%;
     scroll-behavior: smooth;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
 }
 
+/* Let the cards expand slightly without clipping */
 .track::-webkit-scrollbar {
-    height: 6px;
-    display: none;
-}
-
-.carouselContainer:hover .track::-webkit-scrollbar {
-    display: block;
-}
-
-.track::-webkit-scrollbar-thumb {
-    background-color: #555;
-    border-radius: 4px;
+    display: none; /* Chrome, Safari and Opera */
 }

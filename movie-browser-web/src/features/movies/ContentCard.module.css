@@ -1,20 +1,22 @@
 .card {
     position: relative;
-    width: 250px;
-    height: 140px; /* Base 16:9 like standard netflix rows */
+    width: 20vw;
+    max-width: 260px;
+    min-width: 200px;
+    aspect-ratio: 16 / 9;
     flex-shrink: 0;
     cursor: pointer;
     border-radius: 4px;
-    transition: transform var(--transition-speed) ease 0.3s;
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.4s ease;
     background-color: #222;
     z-index: 1;
+    overflow: hidden;
 }
 
 .card:hover {
-    transform: scale(1.3);
+    transform: scale(1.15) translateY(-2%);
     z-index: 10;
     box-shadow: 0 10px 20px rgba(0,0,0,0.8);
-    height: 250px; /* Expand on hover */
     border-radius: 6px;
 }
 
@@ -22,49 +24,62 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-radius: 4px;
+    border-radius: inherit;
+    transition: filter 0.4s ease;
 }
 
-.card:hover .poster {
-    height: 140px; /* Top part remains poster */
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
-}
-
-.hoverInfo {
+.overlay {
     position: absolute;
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 110px;
-    background-color: #141414;
-    padding: 10px;
-    border-bottom-left-radius: 6px;
-    border-bottom-right-radius: 6px;
+    height: 100%;
+    background: linear-gradient(to top, rgba(20,20,20,0.95) 0%, rgba(20,20,20,0) 60%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    justify-content: flex-end;
+    border-radius: inherit;
+}
+
+.card:hover .overlay {
+    opacity: 1;
+}
+
+.hoverInfo {
+    padding: 15px;
+    transform: translateY(10px);
+    transition: transform 0.4s ease;
+}
+
+.card:hover .hoverInfo {
+    transform: translateY(0);
 }
 
 .hoverInfo h4 {
     color: white;
-    font-size: 1rem;
+    font-size: 1.1rem;
+    font-weight: 700;
     margin: 0;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
 }
 
 .meta {
     display: flex;
     gap: 10px;
-    font-size: 0.8rem;
+    font-size: 0.85rem;
     align-items: center;
+    margin-top: 5px;
+    margin-bottom: 3px;
 }
 
 .match {
     color: #46d369;
-    font-weight: bold;
+    font-weight: 700;
 }
 
 .year {
@@ -72,7 +87,7 @@
 }
 
 .genres {
-    color: #fff;
-    font-size: 0.75rem;
+    color: #e5e5e5;
+    font-size: 0.8rem;
     margin: 0;
 }
