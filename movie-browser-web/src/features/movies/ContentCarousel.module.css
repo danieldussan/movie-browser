@@ -41,12 +41,6 @@
     scrollbar-width: none;
     gap: 8px;
     min-height: 300px;
-    cursor: grab;
-    user-select: none;
-}
-
-.track:active {
-    cursor: grabbing;
 }
 
 .track::-webkit-scrollbar {
