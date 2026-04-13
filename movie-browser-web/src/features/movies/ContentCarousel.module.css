@@ -1,29 +1,59 @@
 .carouselContainer {
     margin-bottom: 3.5vw;
+    position: relative;
 }
 
 .title {
-    font-size: 1.3vw;
-    color: #e5e5e5;
+    font-size: 1.4vw;
+    color: var(--text-primary);
     font-weight: 700;
-    margin-bottom: 0.5em;
+    margin-bottom: 0.8em;
     padding: 0 4%;
+    letter-spacing: 0.3px;
+    position: relative;
+    display: inline-block;
+}
+
+.title::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 4%;
+    width: 40px;
+    height: 3px;
+    background: var(--primary-brand);
+    border-radius: 2px;
+    opacity: 0.8;
 }
 
 .trackWrapper {
     position: relative;
+    overflow-y: visible !important;
 }
 
 .track {
     display: flex;
     overflow-x: auto;
     overflow-y: visible;
-    padding: 1vw 4%;
+    padding: 20px 4%;
     scroll-behavior: smooth;
     -ms-overflow-style: none;
     scrollbar-width: none;
+    gap: 8px;
+    min-height: 300px;
+    cursor: grab;
+    user-select: none;
+}
+
+.track:active {
+    cursor: grabbing;
 }
 
 .track::-webkit-scrollbar {
     display: none;
+}
+
+.track > * {
+    flex-shrink: 0;
+    transform-origin: center center;
 }

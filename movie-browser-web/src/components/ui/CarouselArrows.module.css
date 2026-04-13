@@ -1,8 +1,9 @@
 .arrow {
     position: absolute;
-    top: 0;
-    bottom: 0;
-    width: 60px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 100%;
     background: rgba(20, 20, 20, 0.7);
     border: none;
     color: white;
@@ -12,7 +13,8 @@
     justify-content: center;
     z-index: 10;
     opacity: 0;
-    transition: opacity 0.3s ease, background-color 0.2s ease;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(4px);
 }
 
 .trackWrapper:hover .arrow {
@@ -23,12 +25,23 @@
     background: rgba(20, 20, 20, 0.9);
 }
 
+.arrow:active {
+    transform: translateY(-50%) scale(0.95);
+}
+
 .leftArrow {
     left: 0;
-    border-radius: 0 4px 4px 0;
+    border-radius: 0 var(--border-radius) var(--border-radius) 0;
 }
 
 .rightArrow {
     right: 0;
-    border-radius: 4px 0 0 4px;
+    border-radius: var(--border-radius) 0 0 var(--border-radius);
+}
+
+.leftArrow svg,
+.rightArrow svg {
+    width: 32px;
+    height: 32px;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
 }
